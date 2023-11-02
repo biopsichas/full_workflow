@@ -1,0 +1,8 @@
+lulc_mgt,mon_1,day_1,mon_2,day_2,operation,op_data1,op_data2,op_data3
+orcd,,,,,initial_plant,orcd_comm,"2,20000,0,0,1,10000",
+orcd,9,1,10,31,harvest_only,orcd,orchard,
+frst,,,,,initial_plant,frst_comm,"2,50000,0,0,1,10000",
+frse,,,,,initial_plant,frst_comm,"2,50000,0,0,1,10000",
+frsd,,,,,initial_plant,frst_comm,"2,50000,0,0,1,10000",
+wetl,,,,,initial_plant,wetl_comm,"2,50000,0,0,1,10000",
+agrl,,,,,initial_plant,rngb_comm,"1,1000,0,0,1,1000",

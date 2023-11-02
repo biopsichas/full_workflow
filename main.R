@@ -95,3 +95,80 @@ link_aquifer_channels(dir_path)
 temp_path <- system.file("extdata", "pnt_data.xlsx", package = "SWATprepR")
 pnt_data <- load_template(temp_path)
 prepare_ps(pnt_data, dir_path)
+
+##------------------------------------------------------------------------------
+## 8) Run SWATfamR input preparation script
+##------------------------------------------------------------------------------
+in_dir <- "Libraries/farmR_input"
+source(paste0(in_dir, "/write_SWATfarmR_input.R"), chdir=TRUE)
+files <- list.files(in_dir, pattern = "\\.csv$")
+out_dir <- "Temp/farmR_input"
+if (dir.exists(out_dir)) print(paste0(out_dir, " exists!" )) else dir.create(out_dir)
+file.copy(paste0(in_dir, "/", files), "Temp/farmR_input")
+file.remove(paste0(in_dir, "/", files))
+
+##------------------------------------------------------------------------------
+## 9) Update landuse.lum
+##------------------------------------------------------------------------------
+
+if(!file.exists(paste0(dir_path, "/", "landuse.lum.bak"))) {
+  file.copy(from = paste0(dir_path, "/", "landuse.lum"),
+            to = paste0(dir_path, "/", "landuse.lum", ".bak"), overwrite = TRUE)
+}
+
+source('Libraries/read_and_modify_landuse_lum.R')
+file.remove(paste0(dir_path, "/", "landuse.lum"))
+file.rename(paste0(dir_path, "/", "landuse2.lum"),paste0(dir_path, "/", "landuse.lum"))
+
+##------------------------------------------------------------------------------
+## 10) Update time.sim
+##------------------------------------------------------------------------------
+st_year <-  1990
+end_year <- 2022
+
+f_write <- paste0(dir_path, "/", "time.sim")
+time_sim <- read.delim(f_write)
+write.table(paste0("time.sim: written on ", Sys.time()), f_write, append = FALSE,
+            sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
+st_hd <- c(rep('%9s', 5))
+write.table(paste(sprintf(st_hd, unlist(strsplit(time_sim[1,1], "\\s+"))), collapse = ' '), 
+            f_write, append = TRUE, sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
+time_sim_v <- as.numeric(unlist(strsplit(time_sim[2,1], "\\s+"))[-1])
+time_sim_v[c(2, 4)] <- c(st_year, end_year)
+write.table(paste(sprintf(st_hd, time_sim_v), collapse = ' '), 
+            f_write, append = TRUE, sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
+
+##------------------------------------------------------------------------------
+## 11) Run SWAT+ model
+##------------------------------------------------------------------------------
+
+# Copy write.exe into the destination directory
+file.copy(from = "Libraries/swat.exe", to = paste0(dir_path, "/", "swat.exe"), 
+          overwrite = TRUE)
+
+
+if (str_sub(getwd(), -nchar(dir_path), -1) != dir_path) setwd(dir_path)
+
+##Write files
+system("swat.exe")
+
+##Reset back working directory
+setwd(wd_base)
+
+##------------------------------------------------------------------------------
+## 12) Run SWATfamR 
+##------------------------------------------------------------------------------
+
+
+library(SWATfarmR)
+# Define the path to your management schedule input file (from Micha's SWATfarmR
+## input script)
+mgt <- "Temp/farmR_input/farmR_input.csv"
+
+frm <- SWATfarmR::farmr_project$new(project_name = 'frm', project_path = dir_path)
+api <- variable_decay(frm$.data$variables$pcp, -5,0.8)
+asgn <- select(frm$.data$meta$hru_var_connect, hru, pcp)
+frm$add_variable(api, "api", asgn)
+frm$read_management(mgt, discard_schedule = TRUE)
+frm$schedule_operations(start_year = 1990, end_year = 2022, replace = 'all')
+frm$write_operations(start_year = 1990, end_year = 2022)
