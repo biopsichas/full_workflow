@@ -103,7 +103,8 @@ in_dir <- "Libraries/farmR_input"
 source(paste0(in_dir, "/write_SWATfarmR_input.R"), chdir=TRUE)
 files <- list.files(in_dir, pattern = "\\.csv$")
 out_dir <- "Temp/farmR_input"
-if (dir.exists(out_dir)) print(paste0(out_dir, " exists!" )) else dir.create(out_dir)
+if (dir.exists(out_dir)) unlink(out_dir, recursive = TRUE)
+dir.create(out_dir)
 file.copy(paste0(in_dir, "/", files), "Temp/farmR_input")
 file.remove(paste0(in_dir, "/", files))
 
@@ -176,5 +177,9 @@ api <- variable_decay(frm$.data$variables$pcp, -5,0.8)
 asgn <- select(frm$.data$meta$hru_var_connect, hru, pcp)
 frm$add_variable(api, "api", asgn)
 frm$read_management(mgt, discard_schedule = TRUE)
-frm$schedule_operations(start_year = 1990, end_year = 2022, replace = 'all')
-frm$write_operations(start_year = 1990, end_year = 2022)
+frm$schedule_operations(start_year = 1998, end_year = 2022, replace = 'all')
+frm$write_operations(start_year = 1998, end_year = 2022)
+
+##Should be aligned with SWATfarmr input as rotations will be starting wrong for calibration and validation
+## Means 2017 2022 farmr input was wrongs
+## this means weather should be extended back to 1990 or so 
