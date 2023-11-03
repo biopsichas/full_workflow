@@ -9,3 +9,4 @@ Libraries/bildr_script/test_data
 Libraries/bildr_script/settings.R
 Libraries/bildr_script/.Rhistory
 Libraries/bildr_script/.gitignore
+Libraries/farmR_input/*.csv

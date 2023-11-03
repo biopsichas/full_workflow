@@ -53,7 +53,7 @@ hru_crops <- 'field'
 
 ## Multi-year farmland grass
 ## Did you define any multi-year farmland grass schedules? 'y' (yes), 'n' (no)
-m_yr_sch_existing <- 'y'
+m_yr_sch_existing <- 'n'
 
 ## If yes, define also the following variables. If not, skip next four lines
 crop_myr <- 'fesc' # prefix of multi-year schedules in management file
@@ -62,7 +62,7 @@ max_yr <- 5 # maximum number of years farmland grass can grow before it is kille
 ## Do your multi-year farmland grass schedules consider the type of the following crop (summer or winter crop)?
 ## (e.g., a '_1.5yr' schedule with a kill op in spring allows for planting a summer crop immediately afterwards)
 ## If yes, you must define your summer crops
-crop_s <- c("barl", "csil", "sgbt", "onio", "fesc", "mint", "crrt", 'corn','alfa','lett')
+crop_s <- c("barl", "csil", "sgbt", "onio", "mint", "crrt", 'corn','alfa','lett')
 ## Do your summer crop schedules usually start with an operation in autumn (e.g. tillage)?
 ## To combine them with farmland grass, it is necessary that you provide 'half-year-schedules'
 ## ('half-year-schedules' are additional summer crop schedules without operations in autumn)
@@ -91,7 +91,7 @@ check_skip <- check_skip_position()
 check_date_conflicts1()
 
 # Build schedules for crop sequences ----------------------------------------------
-rota_schedules <- build_rotation_schedules_old()
+rota_schedules <- build_rotation_schedules()
 
 # Check for date conflicts in combined (rotation) schedule --------------------------
 check_date_conflicts2()

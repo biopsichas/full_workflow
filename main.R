@@ -108,7 +108,19 @@ file.copy(paste0(in_dir, "/", files), "Temp/farmR_input")
 file.remove(paste0(in_dir, "/", files))
 
 ##------------------------------------------------------------------------------
-## 9) Update landuse.lum
+## 9) Additional editing of farmR_input.csv file (required for SWATfarmR)
+##------------------------------------------------------------------------------
+
+mgt <- "Temp/farmR_input/farmR_input.csv"
+mgt_file <- read.csv(mgt)
+mgt_file[] <- lapply(mgt_file, gsub, pattern = "field_", 
+                     replacement = "f", fixed = TRUE)
+mgt_file <- bind_rows(mgt_file, lapply(mgt_file, gsub, pattern = "_lum", replacement = "_drn_lum", fixed = TRUE))
+file.remove(mgt)
+write_csv(mgt_file, file = mgt, quote = "needed", na = '')
+
+##------------------------------------------------------------------------------
+## 10) Update landuse.lum
 ##------------------------------------------------------------------------------
 
 if(!file.exists(paste0(dir_path, "/", "landuse.lum.bak"))) {
@@ -121,7 +133,7 @@ file.remove(paste0(dir_path, "/", "landuse.lum"))
 file.rename(paste0(dir_path, "/", "landuse2.lum"),paste0(dir_path, "/", "landuse.lum"))
 
 ##------------------------------------------------------------------------------
-## 10) Update time.sim
+## 11) Update time.sim
 ##------------------------------------------------------------------------------
 st_year <-  1990
 end_year <- 2022
@@ -139,7 +151,7 @@ write.table(paste(sprintf(st_hd, time_sim_v), collapse = ' '),
             f_write, append = TRUE, sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
 
 ##------------------------------------------------------------------------------
-## 11) Run SWAT+ model
+## 12) Run SWAT+ model
 ##------------------------------------------------------------------------------
 
 # Copy write.exe into the destination directory
@@ -156,15 +168,9 @@ system("swat.exe")
 setwd(wd_base)
 
 ##------------------------------------------------------------------------------
-## 12) Run SWATfamR 
+## 13) Run SWATfamR 
 ##------------------------------------------------------------------------------
-
-
 library(SWATfarmR)
-# Define the path to your management schedule input file (from Micha's SWATfarmR
-## input script)
-mgt <- "Temp/farmR_input/farmR_input.csv"
-
 frm <- SWATfarmR::farmr_project$new(project_name = 'frm', project_path = dir_path)
 api <- variable_decay(frm$.data$variables$pcp, -5,0.8)
 asgn <- select(frm$.data$meta$hru_var_connect, hru, pcp)
