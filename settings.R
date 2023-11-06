@@ -1,34 +1,65 @@
+
+##Folder where results should be saved
+res_path <- "Temp"
+data_path <- "Data"
+lib_path <- "Libraries"
+
+##Starting year for model setup
+st_year <-  1990
+##End year for the model setup
+end_year <- 2022
+
+## Path to the basin shape file
+basin_path <- system.file("extdata", "GIS/basin.shp", package = "SWATprepR")
+
+## Path to weather data
+## Description of functions and how data example was prepared is on this webpage
+## https://biopsichas.github.io/SWATprepR/articles/weather.html
+weather_path <- paste0(data_path, '/for_prepr/met.rds')
+
+## Path to point data
+## Description of functions and how data example was prepared is on this webpage
+## https://biopsichas.github.io/SWATprepR/articles/psources.html
+temp_path <- system.file("extdata", "pnt_data.xlsx", package = "SWATprepR")
+
+out_path <- "../../"
+buildr_data <- paste0(data_path, "/for_buildr/")
+
+##------------------------------------------------------------------------------
+## SWATbuilder settings 
+##------------------------------------------------------------------------------
+
 # Set input/output paths -------------------------------------------
 #
 # Project path (where output files are saved) ----------------------
-project_path <- '../../Temp/buildr_project'
+project_path <- paste0(out_path, res_path, '/buildr_project')
 project_name <- 'cs4_project'
 
 # Path of the TxtInOut folder (project folder where the SWAT+ text
 # files are written with the SWAT+Editor)
-txt_path <- '../../Temp/buildr_project/cs4_project/txt'
+txt_path <- paste0(out_path, res_path, '/buildr_project/cs4_project/txt')
 
 # Input data -------------------------------------------------------
 ## DEM raster layer path
-dem_path <- '../../Data/for_buildr/DEM.tif'
+dem_path <- paste0(out_path, buildr_data, 'DEM.tif')
 
 ##Soil raster layer and soil tables paths
-soil_layer_path  <- '../../Data/for_buildr/SoilmapSWAT.tif'
-soil_lookup_path <- '../../Data/for_buildr/Soil_SWAT_cod.csv'
-soil_data_path   <- '../../Data/for_buildr/usersoil_lrew.csv'
+soil_layer_path  <- paste0(out_path, buildr_data, 'SoilmapSWAT.tif')
+soil_lookup_path <- paste0(out_path, buildr_data, 'Soil_SWAT_cod.csv')
+soil_data_path   <- paste0(out_path, buildr_data, 'usersoil_lrew.csv')
 
 ## Land input vector layer path
-land_path <- '../../Data/for_buildr/land.shp'
+land_path <- paste0(out_path, buildr_data, 'land.shp')
 
 ## Channel input vector layer path 
-channel_path <- '../../Data/for_buildr/channel.shp'
+channel_path <- paste0(out_path, buildr_data, 'channel.shp')
 
 ## Catchment boundary vector layer path, all layers will be masked by the
 ## basin boundary
-bound_path <- '../../Data/for_buildr/basin.shp'
+bound_path <- paste0(out_path, buildr_data, 'basin.shp')
 
 ## Path to point source location layer
-point_path <- '../../Data/for_buildr/pnt.shp'
+point_path <- paste0(out_path, buildr_data, 'pnt.shp')
 
 # Settings ---------------------------------------------------------
 ## Project layers

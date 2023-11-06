@@ -1,24 +1,31 @@
-# Workflow joing all packages for setup preparation ----------------------------
+# Workflow joining all packages for uncalibated setup preparation --------------
 # 
 # Version 0.0.1
-# Date: 2023-10-29
+# Date: 2023-11-06
 # Developers: Svajunas Plunge    svajunas_plunge@sggw.edu.pl
 # 
 # ------------------------------------------------------------------------------
 
 ##------------------------------------------------------------------------------
-## 1) Check if result folder (Temp) exist, if not create it.
+## 1) Loading  libraries, settings, functions, initializing result's directory
 ##------------------------------------------------------------------------------
 
-if (!file.exists("Temp")) dir.create("Temp", recursive = TRUE)
+library(SWATprepR)
+library(SWATfarmR)
+source('settings.R')
+source('functions.R')
+
+##If exists deleting results directory (Please be careful!!!)
+if (file.exists(res_path)) unlink(res_path, recursive = TRUE)
+##Creating results directory
+dir.create(res_path, recursive = TRUE)
 
 ##------------------------------------------------------------------------------
-## 2) Run buildR
+## 2) Run SWATbuildR
 ##------------------------------------------------------------------------------
 
-##Please make sure swatbuildr.R includes correct path to your settings and your
-##settings includes correct settings in relation to swatbuildr.R file location
-source('Libraries/bildr_script/swatbuildr.R', chdir=TRUE)
+##Please make sure SWATbuilder settings are 
+source(paste0(lib_path, '/bildr_script/swatbuildr.R'), chdir=TRUE)
 
 ##------------------------------------------------------------------------------
 ## 3) Add weather and atmospheric deposition data to setup
@@ -27,15 +34,12 @@ source('Libraries/bildr_script/swatbuildr.R', chdir=TRUE)
 ## Description of functions and how data example was prepared is on this webpage
 ## https://biopsichas.github.io/SWATprepR/articles/weather.html
 
-##Loading library
-library(SWATprepR)
-
 ##Setting paths to the data
-basin_path <- system.file("extdata", "GIS/basin.shp", package = "SWATprepR")
-db_path <- "Temp/buildr_project/cs4_project/cs4_project.sqlite"
+db_path <- list.files(path = getwd(), pattern = project_name, 
+                      recursive = TRUE, full.names = TRUE)
 
 ##Loading weather data and downloading atmospheric deposition
-met <- readRDS('Data/for_prepr/met.rds')
+met <- readRDS(weather_path)
 df <- get_atmo_dep(basin_path)
 
 ##Calculating weather generator statistics
@@ -57,25 +61,14 @@ dbWriteTable(db, 'project_config', project_config, overwrite = TRUE)
 dbDisconnect(db)
 
 ##------------------------------------------------------------------------------
-## 5) Write files files into txtinout
+## 5) Write files files into txtinout with write.exe
 ##------------------------------------------------------------------------------
 
 ##Directory of setup .sqlite database 
 dir_path <- file.path(dirname(db_path))
 
-# Copy write.exe into the destination directory
-file.copy(from = "Libraries/write.exe", to = paste0(dir_path, "/", "write.exe"), 
-          overwrite = TRUE)
-
-##Reset working directory to setup location
-wd_base <- getwd()
-if (str_sub(getwd(), -nchar(dir_path), -1) != dir_path) setwd(dir_path)
-
-##Write files
-system("write.exe")
-
-##Reset back working directory
-setwd(wd_base)
+##Copy write.exe into txtinout directory and run it
+exe_copy_run(lib_path, dir_path, "write.exe")
 
 ##------------------------------------------------------------------------------
 ## 6) Link aquifers and channels with geomorphic flow
@@ -92,20 +85,25 @@ link_aquifer_channels(dir_path)
 ## 7) Add point sources
 ##------------------------------------------------------------------------------
 
-temp_path <- system.file("extdata", "pnt_data.xlsx", package = "SWATprepR")
+## Description of how data should be prepared is on this webpage
+## https://biopsichas.github.io/SWATprepR/articles/psources.html
 pnt_data <- load_template(temp_path)
 prepare_ps(pnt_data, dir_path)
 
 ##------------------------------------------------------------------------------
 ## 8) Run SWATfamR input preparation script
 ##------------------------------------------------------------------------------
-in_dir <- "Libraries/farmR_input"
+
+##Setting directory and running Micha's SWAtfarmR input script
+in_dir <- paste0(lib_path, "/farmR_input")
 source(paste0(in_dir, "/write_SWATfarmR_input.R"), chdir=TRUE)
+
+##Coping results in to results folder
 files <- list.files(in_dir, pattern = "\\.csv$")
-out_dir <- "Temp/farmR_input"
+out_dir <- paste0(res_path, "/farmR_input")
 if (dir.exists(out_dir)) unlink(out_dir, recursive = TRUE)
 dir.create(out_dir)
-file.copy(paste0(in_dir, "/", files), "Temp/farmR_input")
+file.copy(paste0(in_dir, "/", files), paste0(res_path, "/farmR_input"))
 file.remove(paste0(in_dir, "/", files))
 
 ##------------------------------------------------------------------------------
@@ -116,7 +114,8 @@ mgt <- "Temp/farmR_input/farmR_input.csv"
 mgt_file <- read.csv(mgt)
 mgt_file[] <- lapply(mgt_file, gsub, pattern = "field_", 
                      replacement = "f", fixed = TRUE)
-mgt_file <- bind_rows(mgt_file, lapply(mgt_file, gsub, pattern = "_lum", replacement = "_drn_lum", fixed = TRUE))
+mgt_file <- bind_rows(mgt_file, lapply(mgt_file, gsub, pattern = "_lum", 
+                                       replacement = "_drn_lum", fixed = TRUE))
 file.remove(mgt)
 write_csv(mgt_file, file = mgt, quote = "needed", na = '')
 
@@ -134,44 +133,43 @@ file.remove(paste0(dir_path, "/", "landuse.lum"))
 file.rename(paste0(dir_path, "/", "landuse2.lum"),paste0(dir_path, "/", "landuse.lum"))
 
 ##------------------------------------------------------------------------------
+## 11) Update nutrients.sol (if needed)
+##------------------------------------------------------------------------------
+
+f_write <- paste0(dir_path, "/", "nutrients.sol")
+nutrients.sol <- read.delim(f_write)
+nutrients.sol[2,1] <- gsub("5.00000", "40.4000", nutrients.sol[2,1])
+update_file(nutrients.sol, f_write)
+
+##------------------------------------------------------------------------------
 ## 11) Update time.sim
 ##------------------------------------------------------------------------------
-st_year <-  1990
-end_year <- 2022
 
 f_write <- paste0(dir_path, "/", "time.sim")
 time_sim <- read.delim(f_write)
-write.table(paste0("time.sim: written on ", Sys.time()), f_write, append = FALSE,
-            sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
-st_hd <- c(rep('%9s', 5))
-write.table(paste(sprintf(st_hd, unlist(strsplit(time_sim[1,1], "\\s+"))), collapse = ' '), 
-            f_write, append = TRUE, sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
-time_sim_v <- as.numeric(unlist(strsplit(time_sim[2,1], "\\s+"))[-1])
-time_sim_v[c(2, 4)] <- c(st_year, end_year)
-write.table(paste(sprintf(st_hd, time_sim_v), collapse = ' '), 
-            f_write, append = TRUE, sep = "\t", dec = ".", row.names = FALSE, col.names = FALSE, quote = FALSE)
+
+y <- as.numeric(unlist(strsplit(time_sim[2,1], "\\s+"))[-1])
+if(min(y[y>0]) != st_year){
+  time_sim[2,1] <- gsub(min(y[y>0]), st_year, time_sim[2,1])
+}
+if(max(y[y>0]) != end_year){
+  time_sim[2,1] <- gsub(max(y[y>0]), end_year, time_sim[2,1])
+}
+
+update_file(time_sim, f_write)
 
 ##------------------------------------------------------------------------------
 ## 12) Run SWAT+ model
 ##------------------------------------------------------------------------------
 
-# Copy write.exe into the destination directory
-file.copy(from = "Libraries/swat.exe", to = paste0(dir_path, "/", "swat.exe"), 
-          overwrite = TRUE)
-
-
-if (str_sub(getwd(), -nchar(dir_path), -1) != dir_path) setwd(dir_path)
-
-##Write files
-system("swat.exe")
-
-##Reset back working directory
-setwd(wd_base)
+##Copy swat.exe into txtinout directory and run it
+exe_copy_run(lib_path, dir_path, "swat.exe")
 
 ##------------------------------------------------------------------------------
 ## 13) Run SWATfamR 
 ##------------------------------------------------------------------------------
-library(SWATfarmR)
+
+##Preparing management files
 frm <- SWATfarmR::farmr_project$new(project_name = 'frm', project_path = dir_path)
 api <- variable_decay(frm$.data$variables$pcp, -5,0.8)
 asgn <- select(frm$.data$meta$hru_var_connect, hru, pcp)
@@ -180,6 +178,10 @@ frm$read_management(mgt, discard_schedule = TRUE)
 frm$schedule_operations(start_year = 1998, end_year = 2022, replace = 'all')
 frm$write_operations(start_year = 1998, end_year = 2022)
 
-##Should be aligned with SWATfarmr input as rotations will be starting wrong for calibration and validation
-## Means 2017 2022 farmr input was wrongs
-## this means weather should be extended back to 1990 or so 
+##------------------------------------------------------------------------------
+## 14) Final SWAT model run
+##------------------------------------------------------------------------------
+
+##Copy swat.exe into txtinout directory and run it
+exe_copy_run(lib_path, dir_path, "swat.exe")
+print("Congradulations!!! You have pre-calibrated model!!! ")

@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-Temp
+Temp*
 Libraries/bildr_script/.git
 Libraries/bildr_script/.Rproj.user
 Libraries/bildr_script/test_data
