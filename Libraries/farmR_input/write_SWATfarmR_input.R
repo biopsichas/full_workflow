@@ -33,44 +33,6 @@ source('./functions_write_SWATfarmR_input.R')
 foo1(c("sf" , "tidyverse" , "lubridate", "reshape2", "remotes", "dplyr", "data.table"))
 foo2("HighFreq")
 
-# Define input files-----------------------------------------------------------------
-
-lu_shp <- '../../Data/for_farmr_input/lu_crops.shp' # land-use crop map shapefile
-
-mgt_csv <- '../../Data/for_farmr_input/mgt_crops.csv' # crop management .csv table
-
-lu_generic_csv <- '../../Data/for_farmr_input/mgt_generic.csv' # generic land use management .csv table
-
-# Define variables-------------------------------------------------------------------
-
-## Simulation period
-start_y <- 1990 #starting year (consider at least 3 years for warm-up!)
-end_y <- 2022 #ending year
-
-## Prefix of cropland hrus (all names of hrus with a crop rotation must begin
-## with this prefix in column 'lu' of your land use map)
-hru_crops <- 'field'
-
-## Multi-year farmland grass
-## Did you define any multi-year farmland grass schedules? 'y' (yes), 'n' (no)
-m_yr_sch_existing <- 'n'
-
-## If yes, define also the following variables. If not, skip next four lines
-crop_myr <- 'fesc' # prefix of multi-year schedules in management file
-# multiple entries should have the same number of characters, e.g.: crop_myr <- c('akgs', 'bsvg')
-max_yr <- 5 # maximum number of years farmland grass can grow before it is killed (should be <8)
-## Do your multi-year farmland grass schedules consider the type of the following crop (summer or winter crop)?
-## (e.g., a '_1.5yr' schedule with a kill op in spring allows for planting a summer crop immediately afterwards)
-## If yes, you must define your summer crops
-crop_s <- c("barl", "csil", "sgbt", "onio", "mint", "crrt", 'corn','alfa','lett')
-## Do your summer crop schedules usually start with an operation in autumn (e.g. tillage)?
-## To combine them with farmland grass, it is necessary that you provide 'half-year-schedules'
-## ('half-year-schedules' are additional summer crop schedules without operations in autumn)
-## The adapted schedules should be added to the crop management table with suffix '_0.5yr' (e.g. 'csil_0.5yr')
-## If additional 'half-year-schedules' are not needed, because your normal summer crop schedules
-## do not start in autumn, type 'n'
-additional_h_yr_sch_existing <- 'n' # 'y' (yes), 'n' (no)
-
 # Read input data ----------------------------------------------------------------
 
 ## Read land-use crop map shapefile and drop geometry
@@ -104,11 +66,3 @@ check_date_conflicts2()
 
 ## write the SWAT farmR input table -----------------------------------------------
 write_farmR_input()
-
-
-
-
-
-
-
-

@@ -1,14 +1,22 @@
+##------------------------------------------------------------------------------
+## General settings 
+##------------------------------------------------------------------------------
 
-##Folder where results should be saved
+## Folder names
+
+## Folder for saving results
 res_path <- "Temp"
+## Data folder
 data_path <- "Data"
+## Scripts folder
 lib_path <- "Libraries"
 
 ##Starting year for model setup
-st_year <-  1990
+st_year <-  1998
 ##End year for the model setup
 end_year <- 2022
 
+## Path to inout data
 ## Path to the basin shape file
 basin_path <- system.file("extdata", "GIS/basin.shp", package = "SWATprepR")
 
@@ -22,12 +30,16 @@ weather_path <- paste0(data_path, '/for_prepr/met.rds')
 ## https://biopsichas.github.io/SWATprepR/articles/psources.html
 temp_path <- system.file("extdata", "pnt_data.xlsx", package = "SWATprepR")
 
+## Additional paths
+
+## For scripts to get to work directory of setup_workflow.R
 out_path <- "../../"
-buildr_data <- paste0(data_path, "/for_buildr/")
 
 ##------------------------------------------------------------------------------
 ## SWATbuilder settings 
 ##------------------------------------------------------------------------------
+
+buildr_data <- paste0(data_path, "/for_buildr/")
 
 # Set input/output paths -------------------------------------------
 #
@@ -98,3 +110,52 @@ wetland_landuse <- c('wehb', 'wetf', 'wetl', 'wetn')
 ## Maximum distance of a point source to a channel or a reservoir to be included
 ## as a point source object (recall) in the model setup
 max_point_dist <- 500 #meters
+
+
+##------------------------------------------------------------------------------
+## SWATfarmR'er input script settings 
+##------------------------------------------------------------------------------
+
+farmr_i_data <- paste0(data_path, "/for_farmr_input/")
+
+# Define input files------------------------------------------------------------
+
+# land-use crop map shapefile
+lu_shp <- paste0(out_path, farmr_i_data, 'lu_crops.shp') 
+# crop management .csv table
+mgt_csv <- paste0(out_path, farmr_i_data, 'mgt_crops.csv') 
+# generic land use management .csv table
+lu_generic_csv <- paste0(out_path, farmr_i_data, 'mgt_generic.csv')
+
+
+## Simulation period
+start_y <- st_year #starting year (consider at least 3 years for warm-up!)
+end_y <- end_year #ending year
+
+## Prefix of cropland hrus (all names of hrus with a crop rotation must begin
+## with this prefix in column 'lu' of your land use map)
+hru_crops <- 'field'
+
+## Multi-year farmland grass
+## Did you define any multi-year farmland grass schedules? 'y' (yes), 'n' (no)
+m_yr_sch_existing <- 'n'
+
+## If yes, define also the following variables. If not, skip next four lines
+crop_myr <- 'fesc' # prefix of multi-year schedules in management file
+## multiple entries should have the same number of characters, 
+## e.g.: crop_myr <- c('akgs', 'bsvg')
+max_yr <- 5 # maximum number of years farmland grass can grow before it is 
+## killed (should be <8)
+## Do your multi-year farmland grass schedules consider the type of the 
+## following crop (summer or winter crop)? (e.g., a '_1.5yr' schedule with a 
+## kill op in spring allows for planting a summer crop immediately afterwards)
+## If yes, you must define your summer crops
+crop_s <- c("barl", "csil", "sgbt", "onio", "mint", "crrt", 'corn','alfa','lett')
+## Do your summer crop schedules usually start with an operation in autumn 
+## (e.g. tillage)? To combine them with farmland grass, it is necessary that you 
+## provide 'half-year-schedules' ('half-year-schedules' are additional summer 
+## crop schedules without operations in autumn) The adapted schedules should be 
+## added to the crop management table with suffix '_0.5yr' (e.g. 'csil_0.5yr')
+## If additional 'half-year-schedules' are not needed, because your normal 
+## summer crop schedules do not start in autumn, type 'n'
+additional_h_yr_sch_existing <- 'n' # 'y' (yes), 'n' (no)
