@@ -1,9 +1,12 @@
-# Workflow for Uncalibrated Setup Preparation ----------------------------------
-# 
-# Version 0.0.2
-# Date: 2023-11-07
-# Developers: Svajunas Plunge    svajunas_plunge@sggw.edu.pl
-# 
+## Workflow for Uncalibrated Setup Preparation ---------------------------------
+## 
+## Version 0.0.2
+## Date: 2023-11-08
+## Developers: Svajunas Plunge    svajunas_plunge@sggw.edu.pl
+##             Christoph Schürz   christoph.schuerz@ufz.de
+##             Micheal Strauch    michael.strauch@ufz.de
+##
+## 
 
 # ------------------------------------------------------------------------------
 ## Please read before starting!!! The preparation of input data is not part of 
@@ -138,8 +141,8 @@ mgt_file <- read.csv(mgt)
 #                      fixed = TRUE)
 
 ## Updating farmR_input.csv for providing management schedules in drained areas
-mgt_file <- bind_rows(mgt_file, lapply(mgt_file, gsub, pattern = "_lum", 
-                                       replacement = "_drn_lum", fixed = TRUE))
+mgt_file <- bind_rows(mgt_file, mgt_file %>% 
+                        mutate(land_use = gsub("_lum", "_drn_lum", land_use)))
 write_csv(mgt_file, file = mgt, quote = "needed", na = '')
 
 ##------------------------------------------------------------------------------
@@ -167,7 +170,7 @@ source(paste0(lib_path, '/read_and_modify_landuse_lum.R'))
 ## Updating single value of labile phosphorus in nutrients.sol 
 f_write <- paste0(dir_path, "/", "nutrients.sol")
 nutrients.sol <- read.delim(f_write)
-nutrients.sol[2,1] <- gsub("5.00000", "40.4000", nutrients.sol[2,1])
+nutrients.sol[2,1] <- gsub("5.00000", lab_p, nutrients.sol[2,1])
 update_file(nutrients.sol, f_write)
 
 ##------------------------------------------------------------------------------
@@ -239,4 +242,4 @@ frm$write_operations(start_year = st_year, end_year = end_year)
 ## Copy swat.exe into txtinout directory and run it
 exe_copy_run(lib_path, dir_path, "swat.exe")
 print("Congradulations!!! You have pre-calibrated model!!! 
-Please continue to soft-calibration workflow (softcal_worlflow.R)")
+Please continue to soft-calibration workflow (softcal_workflow.R)")

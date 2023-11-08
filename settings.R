@@ -16,7 +16,8 @@ st_year <-  1998
 ##End year for the model setup
 end_year <- 2022
 
-## Path to inout data
+## Paths to input data
+
 ## Path to the basin shape file
 basin_path <- system.file("extdata", "GIS/basin.shp", package = "SWATprepR")
 
@@ -30,10 +31,14 @@ weather_path <- paste0(data_path, '/for_prepr/met.rds')
 ## https://biopsichas.github.io/SWATprepR/articles/psources.html
 temp_path <- system.file("extdata", "pnt_data.xlsx", package = "SWATprepR")
 
-## Additional paths
+## Other settings
 
 ## For scripts to get to work directory of setup_workflow.R
 out_path <- "../../"
+
+## Soluble phosphorus to be written in nutrients.sol (current version of 
+## workflow changes singe value for all catchment)
+lab_p <- "40.4000"
 
 ##------------------------------------------------------------------------------
 ## SWATbuilder settings 
