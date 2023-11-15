@@ -89,11 +89,7 @@ check_date_conflicts1 <- function(){
     }
 
     for(i in 2:length(skip_field)){
-      if(i<length(skip_field)){
-        mgt_sub <- mgt_singlecrop[c((skip_field[i-1]+1):(skip_field[i]-1)),] #schedule for a year
-      }else{
-        mgt_sub <- mgt_singlecrop[c((skip_field[i-1]+1):(skip_field[i])),] #schedule for a year
-      }
+      mgt_sub <- mgt_singlecrop[c((skip_field[i-1]+1):(skip_field[i]-1)),] #schedule for a year
       if(is.unsorted(mgt_sub$doy2, na.rm=T)){ #any conflict in ending operation dates?
         mgt_conflict_ <- crop_mgt.list[k] #save conflicted full year schedule
         mgt_conflict <- c(mgt_conflict,mgt_conflict_)
@@ -353,7 +349,7 @@ build_rotation_schedules <- function(){
     #`%!in%` = negate(`%in%`)
     if(substr(mgt_x$crop_mgt[1],1,nchar(crop_myr)) %!in% crop_myr){
       pos_skip <- grep("skip", mgt_x$operation)[1]
-      if(pos_skip>1) mgt_x <- rbind.data.frame(mgt_x[c((pos_skip+1):dim(mgt_x)[1]),],mgt_x[c(1:pos_skip),])
+      mgt_x <- rbind.data.frame(mgt_x[c((pos_skip+1):dim(mgt_x)[1]),],mgt_x[c(1:pos_skip),])
     }
 
     mgt_x$land_use <- lu$lu[which(lu$lu==lu.list[m])[1]]
@@ -460,8 +456,16 @@ solve_date_conflicts <- function(){
 
           if(idx > 1){
             while(mgt_sub$doy2[idx] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx-1]+1) < mgt_sub$doy2[idx]){
-              mgt_sub$doy2[idx] <- mgt_sub$doy2[idx]-1
-              mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+              if(substr(mgt_sub$crop_mgt[idx],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                mgt_sub$doy2[idx] <- mgt_sub$doy2[idx]-1 #change only date for multi-year grass
+              }
+              else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+              }
+              else{
+                mgt_sub$doy2[idx] <- mgt_sub$doy2[idx]-1
+                mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+              }
             }
           }
 
@@ -470,8 +474,16 @@ solve_date_conflicts <- function(){
           # in maximum, until there is a conflict with previous operation date
           if(mgt_sub$doy2[idx] > mgt_sub$doy2[idy[2]] & idx > 2){
             while(mgt_sub$doy2[idx] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx-2]+1) < mgt_sub$doy2[idx-1]){
-              mgt_sub$doy2[c(idx-1,idx)] <- mgt_sub$doy2[c(idx-1,idx)]-1
-              mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+              if(substr(mgt_sub$crop_mgt[idx],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                mgt_sub$doy2[c(idx-1,idx)] <- mgt_sub$doy2[c(idx-1,idx)]-1 #change only date for multi-year grass
+              }
+              else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+              }
+              else{
+                mgt_sub$doy2[c(idx-1,idx)] <- mgt_sub$doy2[c(idx-1,idx)]-1
+                mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+              }
             }
           }
 
@@ -480,8 +492,16 @@ solve_date_conflicts <- function(){
           # in maximum, until there is a conflict with previous operation date
           if(mgt_sub$doy2[idx] > mgt_sub$doy2[idy[2]] & idx > 3){
             while(mgt_sub$doy2[idx] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx-3]+1) < mgt_sub$doy2[idx-2]){
-              mgt_sub$doy2[c(idx-2,idx-1,idx)] <- mgt_sub$doy2[c(idx-2,idx-1,idx)]-1
-              mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+              if(substr(mgt_sub$crop_mgt[idx],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                mgt_sub$doy2[c(idx-2,idx-1,idx)] <- mgt_sub$doy2[c(idx-2,idx-1,idx)]-1 #change only date for multi-year grass
+              }
+              else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+              }
+              else{
+                mgt_sub$doy2[c(idx-2,idx-1,idx)] <- mgt_sub$doy2[c(idx-2,idx-1,idx)]-1
+                mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+              }
             }
           }
 
@@ -503,8 +523,16 @@ solve_date_conflicts <- function(){
 
               if(idx[f] > 1){
                 while(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx[f]-1]+1) < mgt_sub$doy2[idx[f]]){
-                  mgt_sub$doy2[idx[f]] <- mgt_sub$doy2[idx[f]]-1
-                  mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  if(substr(mgt_sub$crop_mgt[idx[f]],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idx[f]] <- mgt_sub$doy2[idx[f]]-1 #change only date for multi-year grass
+                  }
+                  else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+                  }
+                  else{
+                    mgt_sub$doy2[idx[f]] <- mgt_sub$doy2[idx[f]]-1
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  }
                 }
               }
 
@@ -513,8 +541,16 @@ solve_date_conflicts <- function(){
               # in maximum, until there is a conflict with previous operation date
               if(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & idx[f] > 2){
                 while(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx[f]-2]+1) < mgt_sub$doy2[idx[f]-1]){
-                  mgt_sub$doy2[c(idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-1,idx[f])]-1
-                  mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  if(substr(mgt_sub$crop_mgt[idx[f]],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[c(idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-1,idx[f])]-1 #change only date for multi-year grass
+                  }
+                  else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+                  }
+                  else{
+                    mgt_sub$doy2[c(idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-1,idx[f])]-1
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  }
                 }
               }
 
@@ -523,8 +559,16 @@ solve_date_conflicts <- function(){
               # in maximum, until there is a conflict with previous operation date
               if(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & idx[f] > 3){
                 while(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx[f]-3]+1) < mgt_sub$doy2[idx[f]-2]){
-                  mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])]-1
-                  mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  if(substr(mgt_sub$crop_mgt[idx[f]],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])]-1 #change only date for multi-year grass
+                  }
+                  else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+                  }
+                  else{
+                    mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])]-1
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  }
                 }
               }
               # date shift at the very beginning of a schedule (not addressed in rounds before)
@@ -542,8 +586,16 @@ solve_date_conflicts <- function(){
 
               if(idx[f] > 1){
                 while(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx[f]-1]+1) < mgt_sub$doy2[idx[f]]){
-                  mgt_sub$doy2[idx[f]] <- mgt_sub$doy2[idx[f]]-1
-                  mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  if(substr(mgt_sub$crop_mgt[idx[f]],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idx[f]] <- mgt_sub$doy2[idx[f]]-1 #change only date for multi-year grass
+                  }
+                  else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+                  }
+                  else{
+                    mgt_sub$doy2[idx[f]] <- mgt_sub$doy2[idx[f]]-1
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  }
                 }
               }
 
@@ -552,8 +604,16 @@ solve_date_conflicts <- function(){
               # in maximum, until there is a conflict with previous operation date
               if(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & idx[f] > 2){
                 while(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx[f]-2]+1) < mgt_sub$doy2[idx[f]-1]){
-                  mgt_sub$doy2[c(idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-1,idx[f])]-1
-                  mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  if(substr(mgt_sub$crop_mgt[idx[f]],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[c(idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-1,idx[f])]-1 #change only date for multi-year grass
+                  }
+                  else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+                  }
+                  else{
+                    mgt_sub$doy2[c(idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-1,idx[f])]-1
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  }
                 }
               }
 
@@ -562,8 +622,16 @@ solve_date_conflicts <- function(){
               # in maximum, until there is a conflict with previous operation date
               if(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & idx[f] > 3){
                 while(mgt_sub$doy2[idx[f]] > mgt_sub$doy2[idy[2]] & (mgt_sub$doy2[idx[f]-3]+1) < mgt_sub$doy2[idx[f]-2]){
-                  mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])]-1
-                  mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  if(substr(mgt_sub$crop_mgt[idx[f]],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])]-1 #change only date for multi-year grass
+                  }
+                  else if(substr(mgt_sub$crop_mgt[idx+1],1,4) %in% crop_myr){ #if prior crop at conflict is multi-year grass
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1 #change only date for multi-year grass
+                  }
+                  else{
+                    mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])] <- mgt_sub$doy2[c(idx[f]-2,idx[f]-1,idx[f])]-1
+                    mgt_sub$doy2[idy][-1] <- mgt_sub$doy2[idy][-1]+1
+                  }
                 }
               }
             }
@@ -667,9 +735,11 @@ write_farmR_input <- function(){
 
   # add infos for generic lu classes
   mgt_generic <- mgt_generic %>%
-    mutate(condition_schedule = paste0('(md >= ',sprintf("%02d", mon_1),sprintf("%02d", day_1),
-                                       ') * (md <= ',sprintf("%02d", mon_2),sprintf("%02d", day_2),
-                                       ') * (1 - w_log(pcp, 0, 7)) * (1 - w_log(api, 5, 20)) * (year == (year(prev_op)'))
+    mutate(condition_schedule = if_else(paste(mon_1,day_1,sep="_") == paste(mon_2,day_2,sep="_"),
+      paste0('(md == ',sprintf("%02d", mon_1),sprintf("%02d", day_1),')'),
+      paste0('(md >= ',sprintf("%02d", mon_1),sprintf("%02d", day_1),
+                                  ') * (md <= ',sprintf("%02d", mon_2),sprintf("%02d", day_2),
+                                  ') * (1 - w_log(pcp, 0, 7)) * (1 - w_log(api, 5, 20)) * (year == (year(prev_op)')))
 
   vect3 <- c(mgt_generic$lulc_mgt[-1],NA)
   idq <- which(mgt_generic$lulc_mgt == vect3)
@@ -678,6 +748,9 @@ write_farmR_input <- function(){
   #`%!in%` = negate(`%in%`)
   idg <- idq[which(idq %!in% p_ini)]+1
   mgt_generic$condition_schedule[p_ini] <- ''
+  idh <- which(paste(mgt_generic$mon_1,mgt_generic$day_1,sep="_") == paste(mgt_generic$mon_2,mgt_generic$day_2,sep="_") & is.na(mgt_generic$day_2)==F)
+  if(is.integer0(idh)==F) idf <- idf[-which(idf %in% idh)]
+
   mgt_generic$condition_schedule[idg] <- paste0(mgt_generic$condition_schedule[idg], '))')
   mgt_generic$condition_schedule[idf] <- paste0(mgt_generic$condition_schedule[idf], ' + 1))')
 

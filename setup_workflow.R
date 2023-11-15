@@ -1,7 +1,7 @@
 ## Workflow for Uncalibrated Setup Preparation ---------------------------------
 ## 
-## Version 0.0.2
-## Date: 2023-11-08
+## Version 0.0.3
+## Date: 2023-11-15
 ## Developers: Svajunas Plunge    svajunas_plunge@sggw.edu.pl
 ##             Christoph Schürz   christoph.schuerz@ufz.de
 ##             Micheal Strauch    michael.strauch@ufz.de
@@ -48,9 +48,14 @@ source(paste0(lib_path, '/bildr_script/swatbuildr.R'), chdir=TRUE)
 ## Description of functions and how data example was prepared is on this webpage
 ## https://biopsichas.github.io/SWATprepR/articles/weather.html
 
-## Identifying path to the 
-db_path <- list.files(path = getwd(), pattern = project_name, 
+## Identifying path to the database
+db_path <- list.files(path = getwd(), pattern = paste0(project_name, ".sqlite"), 
                       recursive = TRUE, full.names = TRUE)
+if(length(db_path)>1){
+ stop(paste0("You have more than one database named ", 
+             paste0(project_name, ".sqlite in you working directory. 
+                    Please remove/rename or set path to db manually!!")))
+}
 
 ## Loading weather data and downloading atmospheric deposition
 met <- readRDS(weather_path)
@@ -87,6 +92,8 @@ dbDisconnect(db)
 dir_path <- file.path(dirname(db_path))
 
 ## Copy write.exe into TxtInOut directory and run it
+## (In case you get error in this step the workaround can be opening database 
+## with SWATPluseditor and writing SWAT input files with it.)
 exe_copy_run(lib_path, dir_path, "write.exe")
 
 ##------------------------------------------------------------------------------
@@ -137,8 +144,6 @@ file.remove(paste0(in_dir, "/", files))
 ## Reading the file 
 mgt <- paste0(out_dir, "/farmR_input.csv")
 mgt_file <- read.csv(mgt)
-# mgt_file[] <- lapply(mgt_file, gsub, pattern = "field_", replacement = "f", 
-#                      fixed = TRUE)
 
 ## Updating farmR_input.csv for providing management schedules in drained areas
 mgt_file <- bind_rows(mgt_file, mgt_file %>% 
