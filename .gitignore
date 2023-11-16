@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 Temp*
+Test*
 Libraries/bildr_script/.git
 Libraries/bildr_script/.Rproj.user
 Libraries/bildr_script/test_data

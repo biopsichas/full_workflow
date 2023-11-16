@@ -60,7 +60,7 @@ sgbt,4,10,4,15,fertilizer,elem_p,broadcast,25
 sgbt,4,15,4,25,plant,sgbt,NA,NA
 sgbt,5,20,5,25,fertilizer,elem_n,broadcast,46
 sgbt,6,5,6,10,fertilizer,elem_n,broadcast,36
-sgbt,10,10,10,15,harvest_only,sgbt,vegetables,NA
+sgbt,10,10,10,15,harvest_only,sgbt,tuber,NA
 sgbt,10,10,10,15,kill_only,sgbt,NA,NA
 onio,8,10,8,20,tillage,landlevl,NA,NA
 onio,9,25,10,10,fertilizer,elem_n,broadcast,18
@@ -70,7 +70,7 @@ onio,NA,NA,NA,NA,skip,NA,NA,NA
 onio,3,20,3,31,fertilizer,elem_p,broadcast,54
 onio,4,5,4,15,plant,onio,NA,NA
 onio,5,15,5,25,fertilizer,elem_n,broadcast,72
-onio,8,15,8,31,harvest_only,onio,vegetables,NA
+onio,8,15,8,31,harvest_only,onio,tuber,NA
 onio,8,15,8,31,kill_only,onio,NA,NA
 mint,8,15,8,20,tillage,landlevl,NA,NA
 mint,10,25,10,30,tillage,fallplow,NA,NA
@@ -79,8 +79,8 @@ mint,4,10,4,15,fertilizer,elem_n,broadcast,9
 mint,4,10,4,15,fertilizer,elem_p,broadcast,12
 mint,4,20,4,25,plant,mint,NA,NA
 mint,5,20,5,25,fertilizer,elem_n,broadcast,51
-mint,7,25,7,30,harvest_only,mint,vegetables,NA
-mint,8,1,8,5,harvest_only,mint,vegetables,NA
+mint,7,25,7,30,harvest_only,mint,hay_cut_low,NA
+mint,8,1,8,5,harvest_only,mint,hay_cut_low,NA
 mint,8,1,8,5,kill_only,mint,NA,NA
 alfa,NA,NA,NA,NA,skip,NA,NA,NA
 alfa,4,1,4,15,fertilizer,elem_n,broadcast,30
@@ -95,13 +95,13 @@ lett,10,20,10,30,tillage,fallplow,NA,NA
 lett,NA,NA,NA,NA,skip,NA,NA,NA
 lett,3,25,3,30,fertilizer,elem_n,broadcast,30
 lett,4,1,4,5,plant,lett,NA,NA
-lett,6,15,6,18,harvest_only,vegetables,NA,
+lett,6,15,6,18,harvest_only,lett,hay_cut_low,NA
 lett,6,18,6,20,fertilizer,elem_n,broadcast,30
-lett,7,15,7,18,harvest_only,vegetables,NA,
+lett,7,15,7,18,harvest_only,lett,hay_cut_low,NA
 lett,7,18,7,20,fertilizer,elem_n,broadcast,30
-lett,8,15,8,18,harvest_only,vegetables,NA,
+lett,8,15,8,18,harvest_only,lett,hay_cut_low,NA
 lett,8,18,8,20,fertilizer,elem_n,broadcast,30
-lett,9,15,9,20,harvest_only,vegetables,NA,
+lett,9,15,9,20,harvest_only,lett,hay_cut_low,NA
 lett,9,15,9,20,kill_only,lett,NA,NA
 crrt,8,15,8,20,tillage,landlevl,NA,NA
 crrt,10,25,10,30,tillage,fallplow,NA,NA
@@ -111,5 +111,5 @@ crrt,4,5,4,10,fertilizer,elem_n,broadcast,49
 crrt,4,5,4,10,fertilizer,elem_p,broadcast,21
 crrt,4,10,4,15,plant,crrt,NA,NA
 crrt,5,20,5,30,fertilizer,elem_n,broadcast,51
-crrt,10,10,10,30,harvest_only,vegetables,NA,
+crrt,10,10,10,30,harvest_only,crrt,tuber,NA
 crrt,10,10,10,30,kill_only,crrt,NA,NA
