@@ -31,7 +31,7 @@ read_tbl <- function(tbl_name, proj_path, row_data_start, row_col_names) {
 
 # Read landuse.lum --------------------------------------------------
 lum <- read_tbl('landuse.lum.bak', proj_path, 3, 2)
-lum_head <- vroom_lines(paste(proj_path, 'landuse.lum', sep = '/'), n_max = 1) %>%
+lum_head <- vroom_lines(paste(proj_path, 'landuse.lum.bak', sep = '/'), n_max = 1) %>%
   paste0(., ', edited manually on ', Sys.time())
 
 # Define pointers in landuse.lum ------------------------------------
