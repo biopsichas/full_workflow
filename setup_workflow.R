@@ -21,7 +21,7 @@
 ## validation of the model, running scenarios, etc.
 
 ##------------------------------------------------------------------------------
-## 1) Loading  libraries, settings, functions, initializing results directory
+## 
 ##------------------------------------------------------------------------------
 
 library(SWATprepR)

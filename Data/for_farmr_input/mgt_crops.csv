@@ -82,14 +82,6 @@ mint,5,20,5,25,fertilizer,elem_n,broadcast,51
 mint,7,25,7,30,harvest_only,mint,hay_cut_low,NA
 mint,8,1,8,5,harvest_only,mint,hay_cut_low,NA
 mint,8,1,8,5,kill_only,mint,NA,NA
-alfa,NA,NA,NA,NA,skip,NA,NA,NA
-alfa,4,1,4,15,fertilizer,elem_n,broadcast,30
-alfa,4,1,4,15,tillage,cchplow,NA,NA
-alfa,4,15,4,20,plant,alfa,NA,NA
-alfa,7,10,7,20,harvest_only,alfa,hay_cut_low,NA
-alfa,8,14,8,20,harvest_only,alfa,hay_cut_low,NA
-alfa,9,24,9,30,harvest_only,alfa,hay_cut_low,NA
-alfa,9,24,9,30,kill_only,alfa,NA,NA
 lett,8,1,8,15,tillage,landlevl,NA,NA
 lett,10,20,10,30,tillage,fallplow,NA,NA
 lett,NA,NA,NA,NA,skip,NA,NA,NA
