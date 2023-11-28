@@ -39,7 +39,7 @@ dir.create(res_path, recursive = TRUE)
 ##------------------------------------------------------------------------------
 
 ## Please make sure SWATbuildR'er settings are provided in settings file
-source(paste0(lib_path, '/bildr_script/swatbuildr.R'), chdir=TRUE)
+source(paste0(lib_path, '/buildr_script/swatbuildr.R'), chdir=TRUE)
 
 ##------------------------------------------------------------------------------
 ## 3) Adding weather and atmospheric deposition data to model setup
