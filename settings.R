@@ -12,7 +12,7 @@ data_path <- "Data"
 lib_path <- "Libraries"
 
 ##Starting year for model setup
-st_year <-  1998
+st_year <-  2003
 ##End year for the model setup
 end_year <- 2022
 
