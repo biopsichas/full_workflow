@@ -328,6 +328,825 @@ build_rotation_schedules <- function(){
               if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
             }
           }
+          if(length(pos_scrop)==4){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==5){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==6){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==7){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==8){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==9){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==10){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==11){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[11]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[10] & myr_seq<pos_scrop[11])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][11] <- paste0(rota[pos_scrop][11],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==12){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[11]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[10] & myr_seq<pos_scrop[11])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][11] <- paste0(rota[pos_scrop][11],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[12]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[11] & myr_seq<pos_scrop[12])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][12] <- paste0(rota[pos_scrop][12],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==13){
+
+            if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[11]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[10] & myr_seq<pos_scrop[11])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][11] <- paste0(rota[pos_scrop][11],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[12]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[11] & myr_seq<pos_scrop[12])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][12] <- paste0(rota[pos_scrop][12],'_0.5yr')
+            }
+            if(substr(rota[pos_scrop[13]],1,4)%in%crop_s){
+              idx_myr <- myr_seq[which(myr_seq>pos_scrop[12] & myr_seq<pos_scrop[13])]
+              rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+              if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][13] <- paste0(rota[pos_scrop][13],'_0.5yr')
+            }
+          }
+          if(length(pos_scrop)==14){
+
+              if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[11]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[10] & myr_seq<pos_scrop[11])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][11] <- paste0(rota[pos_scrop][11],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[12]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[11] & myr_seq<pos_scrop[12])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][12] <- paste0(rota[pos_scrop][12],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[13]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[12] & myr_seq<pos_scrop[13])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][13] <- paste0(rota[pos_scrop][13],'_0.5yr')
+              }
+              if(substr(rota[pos_scrop[14]],1,4)%in%crop_s){
+                idx_myr <- myr_seq[which(myr_seq>pos_scrop[13] & myr_seq<pos_scrop[14])]
+                rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][14] <- paste0(rota[pos_scrop][14],'_0.5yr')
+              }
+            }
+          if(length(pos_scrop)==15){
+
+                if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[11]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[10] & myr_seq<pos_scrop[11])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][11] <- paste0(rota[pos_scrop][11],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[12]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[11] & myr_seq<pos_scrop[12])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][12] <- paste0(rota[pos_scrop][12],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[13]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[12] & myr_seq<pos_scrop[13])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][13] <- paste0(rota[pos_scrop][13],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[14]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[13] & myr_seq<pos_scrop[14])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][14] <- paste0(rota[pos_scrop][14],'_0.5yr')
+                }
+                if(substr(rota[pos_scrop[15]],1,4)%in%crop_s){
+                  idx_myr <- myr_seq[which(myr_seq>pos_scrop[14] & myr_seq<pos_scrop[15])]
+                  rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                  if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][15] <- paste0(rota[pos_scrop][15],'_0.5yr')
+                }
+              }
+          if(length(pos_scrop)==16){
+
+                  if(substr(rota[pos_scrop[1]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq<pos_scrop[1])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][1] <- paste0(rota[pos_scrop][1],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[2]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[1] & myr_seq<pos_scrop[2])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][2] <- paste0(rota[pos_scrop][2],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[3]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[2] & myr_seq<pos_scrop[3])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][3] <- paste0(rota[pos_scrop][3],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[4]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[3] & myr_seq<pos_scrop[4])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][4] <- paste0(rota[pos_scrop][4],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[5]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[4] & myr_seq<pos_scrop[5])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][5] <- paste0(rota[pos_scrop][5],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[6]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[5] & myr_seq<pos_scrop[6])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][6] <- paste0(rota[pos_scrop][6],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[7]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[6] & myr_seq<pos_scrop[7])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][7] <- paste0(rota[pos_scrop][7],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[8]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[7] & myr_seq<pos_scrop[8])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][8] <- paste0(rota[pos_scrop][8],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[9]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[8] & myr_seq<pos_scrop[9])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][9] <- paste0(rota[pos_scrop][9],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[10]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[9] & myr_seq<pos_scrop[10])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][10] <- paste0(rota[pos_scrop][10],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[11]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[10] & myr_seq<pos_scrop[11])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][11] <- paste0(rota[pos_scrop][11],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[12]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[11] & myr_seq<pos_scrop[12])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][12] <- paste0(rota[pos_scrop][12],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[13]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[12] & myr_seq<pos_scrop[13])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][13] <- paste0(rota[pos_scrop][13],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[14]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[13] & myr_seq<pos_scrop[14])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][14] <- paste0(rota[pos_scrop][14],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[15]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[14] & myr_seq<pos_scrop[15])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][15] <- paste0(rota[pos_scrop][15],'_0.5yr')
+                  }
+                  if(substr(rota[pos_scrop[16]],1,4)%in%crop_s){
+                    idx_myr <- myr_seq[which(myr_seq>pos_scrop[15] & myr_seq<pos_scrop[16])]
+                    rota[idx_myr] <- paste0(rota[idx_myr],'_',myr_max[idx_myr]-1,'.5yr','_',myr_idx[idx_myr])
+
+                    if(additional_h_yr_sch_existing == 'y') rota[pos_scrop][16] <- paste0(rota[pos_scrop][16],'_0.5yr')
+                  }
+          }
 
           if(is.integer0(grep('.5',rota[myr_seq]))){
             rota[myr_seq] <- paste0(rota[myr_seq],'_',myr_max[myr_seq],'.0yr','_',myr_idx[myr_seq])
@@ -658,12 +1477,6 @@ solve_date_conflicts <- function(){
         }
 
         # correction of ending dates, if ops have different starting dates but equal ending dates
-        #idx3 <- which(diff(mgt_sub$doy2)==0 & diff(mgt_sub$doy1)>0)
-        #if(is.integer0(idx3)==F){
-        #  idy3 <- which(mgt_sub$doy1[idx3:length(mgt_sub$doy1)]-mgt_sub$doy1[idx3] > 0) + idx3 -1
-        #  mgt_sub$doy2[idy3] <- mgt_sub$doy2[idy3] + 1
-        #}
-
         # make sure the time intervals for each op have a minimum length of five days
         for(j in 1:length(mgt_sub$crop_mgt)){
           if((mgt_sub$doy1[j]+7) > mgt_sub$doy2[j]){
