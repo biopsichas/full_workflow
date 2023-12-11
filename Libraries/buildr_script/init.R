@@ -42,4 +42,21 @@ if (length(wbt_exe) == 0){
                          recursive = TRUE, full.names = TRUE) 
 }
 
+if (length(wbt_exe) == 0){
+  cat(paste0("The required 'whitebox_tools.exe' file could not be located in \n", 
+             toString(.libPaths()), " or C:/Users/ directories. 
+  If you have not installed the 'whitebox' package, please stop the script, 
+  install it, and only then restart the running workflow. Otherwise, a full computer search will be 
+  performed. Depending on your computer specifications, this process could take some time. 
+  Please be patient ;)"))
+  sysdrivereport <- system("wmic logicaldisk get caption", intern = TRUE)
+  wbt_exe <- list.files( path = paste0(substr(sysdrivereport[-c(1, length(sysdrivereport))], 1, 1), ":/"), 
+                         pattern = 'whitebox_tools.exe', 
+                         recursive = TRUE, full.names = TRUE) 
+}
+
+if (length(wbt_exe) == 0){
+  stop("'whitebox_tools.exe' file could not be located in your computer. Please install whitebox package!!!" )
+}
+
 wbt_init(exe_path = wbt_exe)
