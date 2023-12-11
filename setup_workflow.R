@@ -246,5 +246,33 @@ frm$write_operations(start_year = st_year, end_year = end_year)
 
 ## Copy swat.exe into txtinout directory and run it
 exe_copy_run(lib_path, dir_path, "swat.exe")
-print("Congradulations!!! You have pre-calibrated model!!! 
+
+##------------------------------------------------------------------------------
+## 17) Extracting SWAT input files and overwriting with a set of files 
+##------------------------------------------------------------------------------
+
+## Preparing directory
+clean_path <- paste0(res_path, "/", "clean_setup")
+## If the directory exists, delete the results directory. (Please be careful!!!)
+if (file.exists(clean_path)) unlink(clean_path, recursive = TRUE)
+## Creating results directory
+dir.create(clean_path, recursive = TRUE)
+
+## Coping only input files
+file.copy(setdiff(list.files(path = dir_path, full.names = TRUE), 
+                  list.files(path = dir_path, 
+                             pattern = ".*.txt|.*success.fin|.*co2.out|.*.exe|
+                   .*simulation.out|.*.bak|.*.mgts|.*.farm|.*area_calc.out|
+                   .*checker.out|.*sqlite|.*diagnostics.out|.*erosion.out|
+                   .*files_out.out|.*.swf", full.names = TRUE)), 
+          clean_path)
+
+## Overwriting with a set of manually adjusted files (if needed)
+## Directory could be empty, if you don't have any files to be used.
+file.copy(list.files(
+  path = paste0(lib_path, "/files_to_overwrite_at_the_end"), full.names = TRUE), 
+  clean_path, overwrite = TRUE)
+
+cat("Congradulations!!! You have pre-calibrated model!!! \n
 Please continue to soft-calibration workflow (softcal_workflow.R)")
+print(paste0("Your setup is located in the ", getwd(), "/", clean_path))
