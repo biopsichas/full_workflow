@@ -261,10 +261,11 @@ dir.create(clean_path, recursive = TRUE)
 ## Coping only input files
 file.copy(setdiff(list.files(path = dir_path, full.names = TRUE), 
                   list.files(path = dir_path, 
-                             pattern = ".*.txt|.*success.fin|.*co2.out|.*.exe|
-                   .*simulation.out|.*.bak|.*.mgts|.*.farm|.*area_calc.out|
-                   .*checker.out|.*sqlite|.*diagnostics.out|.*erosion.out|
-                   .*files_out.out|.*.swf", full.names = TRUE)), 
+                             pattern = ".*.txt|.*.zip|.*success.fin|.*co2.out|
+                             .*.exe|.*simulation.out|.*.bak|.*.mgts|.*.farm|
+                             .*area_calc.out|.*checker.out|.*sqlite|
+                             .*diagnostics.out|.*erosion.out|.*files_out.out|
+                             .*.swf", full.names = TRUE)), 
           clean_path)
 
 ## Overwriting with a set of manually adjusted files (if needed)
