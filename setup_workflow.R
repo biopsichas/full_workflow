@@ -216,7 +216,7 @@ print(paste0("land_connections_as_lines.shp is prepared in ", dir_path,
 ##------------------------------------------------------------------------------
 
 ##Copy swat.exe into txtinout directory and run it
-exe_copy_run(lib_path, dir_path, "swat.exe")
+exe_copy_run(lib_path, dir_path, swat_exe)
 
 ##------------------------------------------------------------------------------
 ## 15) Running SWATfamR'er to prepare management files
@@ -245,7 +245,7 @@ frm$write_operations(start_year = st_year, end_year = end_year)
 ##------------------------------------------------------------------------------
 
 ## Copy swat.exe into txtinout directory and run it
-exe_copy_run(lib_path, dir_path, "swat.exe")
+exe_copy_run(lib_path, dir_path, swat_exe)
 
 ##------------------------------------------------------------------------------
 ## 17) Extracting SWAT input files and overwriting with a set of files 
@@ -261,11 +261,7 @@ dir.create(clean_path, recursive = TRUE)
 ## Coping only input files
 file.copy(setdiff(list.files(path = dir_path, full.names = TRUE), 
                   list.files(path = dir_path, 
-                             pattern = ".*.txt|.*.zip|.*success.fin|.*co2.out|
-                             .*.exe|.*simulation.out|.*.bak|.*.mgts|.*.farm|
-                             .*area_calc.out|.*checker.out|.*sqlite|
-                             .*diagnostics.out|.*erosion.out|.*files_out.out|
-                             .*.swf", full.names = TRUE)), 
+                             pattern = ".*.txt|.*.zip|.*success.fin|.*co2.out|.*.exe|.*simulation.out|.*.bak|.*.mgts|.*.farm|.*area_calc.out|.*checker.out|.*sqlite|.*diagnostics.out|.*erosion.out|.*files_out.out|.*.swf", full.names = TRUE)), 
           clean_path)
 
 ## Overwriting with a set of manually adjusted files (if needed)

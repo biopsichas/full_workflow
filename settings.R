@@ -2,6 +2,9 @@
 ## General settings 
 ##------------------------------------------------------------------------------
 
+## SWAT+ model file name to be used in workflow (should be in 'Libraries' folder)
+swat_exe <- "Rev_60_5_7_64rel.exe"
+
 ## Folder names
 
 ## Folder for saving results
