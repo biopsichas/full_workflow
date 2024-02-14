@@ -117,7 +117,7 @@ link_aquifer_channels(dir_path)
 ## Load data from template
 pnt_data <- load_template(temp_path)
 ## Add to the model
-prepare_ps(pnt_data, dir_path)
+prepare_ps(pnt_data, dir_path, constant = TRUE)
 
 ##------------------------------------------------------------------------------
 ## 8) Running SWATfamR'er input preparation script
