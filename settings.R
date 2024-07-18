@@ -3,7 +3,7 @@
 ##------------------------------------------------------------------------------
 
 ## SWAT+ model file name to be used in workflow (should be in 'Libraries' folder)
-swat_exe <- "Rev_60_5_7_64rel.exe"
+swat_exe <- "Rev_61_0_64rel.exe"
 
 ## Folder names
 

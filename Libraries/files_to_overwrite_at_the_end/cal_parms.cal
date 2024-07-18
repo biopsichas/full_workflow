@@ -152,7 +152,7 @@ bf_max                         aqu       0.10000       2.00000                mm
 cbn_init                       aqu       0.00000      20.00000                 % 
 dep_bot                        aqu       1.00000      50.00000                 m
 dep_wt_init                    aqu       0.00000      50.00000                 m
-deep_seep                      aqu       0.00100       0.40000               m/m 
+deep_seep                      aqu       0.00000       0.40000               m/m 
 flo_dist                       aqu       0.00000     300.00000                 m            
 flo_init_mm                    aqu       0.00000       5.00000                mm 
 hlife_n                        aqu       0.00000     365.00000              days
@@ -160,7 +160,7 @@ minp_init                      aqu       0.00000      10.00000                kg
 no3_init                       aqu       0.00000      30.00000               ppm
 sp_yld                         aqu       0.00000       0.50000          fraction  
 flo_min                        aqu       0.00000      50.00000                 m  
-revap_co                       aqu       0.02000       0.20000              null  
+revap_co                       aqu       0.00000       0.20000              null  
 revap_min                      aqu       0.00000      50.00000                 m  
 cn2_lte                        hlt      25.00000      98.00000              null  
 awc_lte                        hlt       0.01000       1.00000         mm_H20/mm  
