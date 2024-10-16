@@ -324,9 +324,24 @@ dir.create(clean_path, recursive = TRUE)
 ## Coping only input files
 file.copy(setdiff(list.files(path = dir_path, full.names = TRUE), 
                   list.files(path = dir_path, 
-                             pattern = ".*.txt|.*.zip|.*success.fin|.*co2.out|.*.exe|.*simulation.out|.*.bak|.*.mgts|.*.farm|.*area_calc.out|.*checker.out|.*sqlite|.*diagnostics.out|.*erosion.out|.*files_out.out|.*.swf", full.names = TRUE)), 
+                             pattern = ".*.txt|.*.zip|.*success.fin|.*co2.out|.*write.exe|.*simulation.out|.*.bak|.*.mgts|.*.farm|.*area_calc.out|.*checker.out|.*sqlite|.*diagnostics.out|.*erosion.out|.*files_out.out|.*.swf", full.names = TRUE)), 
           clean_path)
 
 cat("Congradulations!!! You have pre-calibrated model!!! \n
 Please continue to soft-calibration workflow (softcal_workflow.R)")
 print(paste0("Your setup is located in the ", getwd(), "/", clean_path))
+
+##------------------------------------------------------------------------------
+## 20) Adding calibration.cal file to SWAT model (preparing calibrated setup)
+##------------------------------------------------------------------------------
+cal_file_nb <- 1
+cal_file <- paste0(lib_path, "/calibration_cal/calibration", as.character(cal_file_nb), ".cal")
+file.copy(from = cal_file, 
+          to = paste0(clean_path, "/calibration.cal"), overwrite = TRUE)
+
+## Updating file.cio file
+file_cio <- readLines(paste0(clean_path, "/", "file.cio"))
+if(!grepl("calibration.cal", file_cio[22], fixed = TRUE)){
+  file_cio[22] <- "chg               cal_parms.cal     calibration.cal   null              null              null              null              null              null              null              "
+  writeLines(file_cio, paste0(clean_path, "/", "file.cio"))
+}

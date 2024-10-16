@@ -17,3 +17,7 @@ alfa,4,1,4,15,fertilizer,elem_n,broadcast,35
 alfa,7,10,7,20,harvest_only,alfa,hay_cut_low,NA
 alfa,8,14,8,20,harvest_only,alfa,hay_cut_low,NA
 alfa,9,24,9,30,harvest_only,alfa,hay_cut_low,NA
+urld,,,,,initial_plant,rnge_test,"1,1000,0,0,1,1000",
+urld,9,1,9,1,harvest_only,rnge_test,grass_mulch,
+urhd,,,,,initial_plant,rnge_test,"1,1000,0,0,1,1000",
+urhd,9,1,9,1,harvest_only,rnge_test,grass_mulch,
