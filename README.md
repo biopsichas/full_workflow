@@ -1,19 +1,4 @@
----
-title: "Workflow for Uncalibrated SWAT+ Setup Preparation"
-author: |
-  Svajunas Plunge  
-  Christoph Schürz  
-  Michael Strauch
-date: "2024-07-18"
-output: 
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float: true
-  pdf_document: default
----
-
-# Introduction  
+# Workflow for Uncalibrated SWAT+ Setup Preparation  
 
 This document describes the workflow for preparing a **fully parameterised but uncalibrated SWAT+ model setup**.  
 It is intended as a practical guide for researchers and practitioners working with the SWAT+ model in the context of the OPTAIN project and beyond.  
