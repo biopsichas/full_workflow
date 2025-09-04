@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+*.html
 Temp*
 Test*
 Libraries/buildr_script/.git
